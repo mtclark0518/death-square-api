@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Http} from '@angular/http';
+import 'rxjs/add/operator/toPromise';
 
 @Component({
   selector: 'app-info-window',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoWindowComponent implements OnInit {
 
-  constructor() { }
+  dataBanks;
+  
+  constructor(
+    private http: Http
+  ) { }
 
-  ngOnInit() {
+  findTurret(turretNumber){
+    console.log('hi there');
+    this.http.get(`http://localhost:3000/api/turret/${turretNumber}`)
+    .toPromise()
+    .then(response => console.log(response.json().turretNumber));
+    // .then(response => this.dataBanks = 7);
+    console.log (this.dataBanks);
+
+    
   }
+
+    ngOnInit() {
+    this.findTurret(5);
+    this.findTurret(8);
+    }
 
 }

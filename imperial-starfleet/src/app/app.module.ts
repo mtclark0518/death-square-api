@@ -17,8 +17,8 @@ import { InfoWindowComponent } from './info-window/info-window.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     HttpModule,
+    FormsModule,
     DeathSquareModule,
     AppRoutingModule
   ],
